@@ -1,0 +1,7 @@
+/* your css */
+@import url("material-colors.css");
+
+body {
+    background-color: var(--token-name);
+    color: var(--token-name);
+  }
