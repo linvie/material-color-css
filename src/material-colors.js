@@ -12,6 +12,8 @@ import {
   SchemeVibrant,
   SchemeRainbow,
   SchemeFruitSalad,
+  QuantizerCelebi,
+  Score,
 } from "../../@material/material-color-utilities/index.js";
 
 function setColorFromScheme([mode, contrast, scheme], colorName) {
@@ -131,5 +133,72 @@ export function updateColors(sourceColor, schemeType = "tonalspot") {
         setColorFromScheme(param, cn);
       });
     });
+  });
+}
+
+// color from image
+function convertImageToARGB(file) {
+  return new Promise((resolve, reject) => {
+    if (!file || !file.type.startsWith("image/")) {
+      reject("Invalid file type");
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      const img = new Image();
+      img.onload = function () {
+        const maxDimension = 128;
+        let width = img.width;
+        let height = img.height;
+
+        if (width > maxDimension || height > maxDimension) {
+          if (width > height) {
+            height = Math.round((height * maxDimension) / width);
+            width = maxDimension;
+          } else {
+            width = Math.round((width * maxDimension) / height);
+            height = maxDimension;
+          }
+        }
+
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0, width, height);
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const pixels = imageDataToARGB(imageData);
+        resolve(pixels);
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function imageDataToARGB(imageData) {
+  const width = imageData.width;
+  const height = imageData.height;
+  const data = imageData.data;
+  const pixels = new Array(width * height);
+
+  for (let i = 0; i < data.length; i += 4) {
+    const r = data[i];
+    const g = data[i + 1];
+    const b = data[i + 2];
+    const a = data[i + 3];
+    const argb = (a << 24) | (r << 16) | (g << 8) | b;
+    pixels[i / 4] = argb;
+  }
+  return pixels;
+}
+
+export function colorFromImage(file) {
+  convertImageToARGB(file).then((pixels) => {
+    const quantizerResult = QuantizerCelebi.quantize(pixels, 128);
+    const colors = Score.score(quantizerResult);
+    console.log(colors);
+    updateColors(hexFromArgb(colors[0]));
   });
 }

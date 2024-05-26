@@ -4,8 +4,23 @@
     margin: 0;
     padding: 0;
 }
-div {
+.win {
     height: 100vh;
     width: 100vw;
+    background: var(light-default-surface-container);
+}
+
+.content{
+    margin: 30vh auto;
+    height: 30vh;
+    width: 40vw;
+    background: var(--light-default-primary-container);
+}
+
+button{
+    height: 10em;
+    width: 12em;
     background: var(--light-default-primary);
+    color: var(--light-default-on-primary);
+    font-size: 12px;
 }
