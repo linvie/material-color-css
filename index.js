@@ -1,1 +1,1 @@
-export * from "./src/material-colors";
+export * from "./src/material-colors.js";

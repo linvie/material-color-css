@@ -1,5 +1,5 @@
-const fs = require("fs");
 const path = require("path");
+const fs = require("fs");
 
 // Ensure the target directory exists
 const targetDir = path.join(process.cwd(), "public/css");
