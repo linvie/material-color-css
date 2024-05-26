@@ -1,22 +1,28 @@
 {
   "name": "material-color-css",
-  "version": "0.0.1",
+  "version": "0.1.1",
   "description": "Provides an easy way to apply Material Design dynamic color schemes to your project through CSS. ",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node bin/install.js"
+  },
+  "bin": {
+    "install-script": "./bin/install.js"
   },
   "author": "linvie",
   "license": "MIT",
   "dependencies": {
-    "material-color-utilities": "github:material-foundation/material-color-utilities/tree/main/typescript"
+    "@material/material-color-utilities": "^0.2.7"
   },
   "main": "index.js",
   "keywords": [
-    "material-design",
-    "dynamic-colors",
-    "palette",
-    "theme"
+    "material",
+    "material design",
+    "material3",
+    "material you",
+    "color extraction",
+    "theming"
   ],
   "files": [
     "src",

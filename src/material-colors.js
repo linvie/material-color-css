@@ -6,21 +6,26 @@ import {
   SchemeContent,
   SchemeExpressive,
   SchemeFidelity,
-  DynamicColor,
   SchemeMonochrome,
   SchemeNeutral,
   SchemeTonalSpot,
   SchemeVibrant,
   SchemeRainbow,
-} from "@material/material-color-utilities";
+  SchemeFruitSalad,
+} from "../node_modules/@material/material-color-utilities/index.js";
 
-export default function setColor(
-  sourceColor,
-  mode,
-  contrast,
-  paletteName,
-  styleProperty
-) {
+function setColorFromScheme([mode, contrast, scheme], colorName) {
+  const palette = MaterialDynamicColors[colorName];
+  if (palette) {
+    const color = hexFromArgb(palette.getArgb(scheme));
+    const originalName = palette.name;
+    const propertyName = originalName.replace(/_/g, "-");
+    const styleProperty = `--${mode}-${contrast}-${propertyName}`;
+    document.documentElement.style.setProperty(styleProperty, color);
+  } else console.error(`${paletteName} doesn't exist!`);
+}
+
+function colorScheme(sourceColor, type, mode, contrast) {
   const hct = Hct.fromInt(argbFromHex(sourceColor));
 
   let isDark;
@@ -35,35 +40,96 @@ export default function setColor(
   else if (contrast === "reduced") contrastLevel = -1.0;
   else console.error("contrast type error!");
 
-  const scheme = new SchemeTonalSpot(hct, isDark, contrastLevel);
-  const palette = MaterialDynamicColors[paletteName];
-  if (palette) {
-    const color = hexFromArgb(palette.getArgb(scheme));
-    document.documentElement.style.setProperty(styleProperty, color);
-  } else console.error(`${paletteName} doesn't exist!`);
-}
-
-function colorScheme(type, hct, isDark, contrastLevel) {
-  type.toLowercase();
+  if (typeof type === "string") {
+    type = type.toLowerCase();
+  } else {
+    console.error("type is not a string");
+  }
+  let scheme;
   if (type === "content") {
-    const scheme = new SchemeContent(hct, isDark, contrastLevel);
+    scheme = new SchemeContent(hct, isDark, contrastLevel);
   } else if (type === "expressive") {
-    const scheme = new SchemeExpressive(hct, isDark, contrastLevel);
+    scheme = new SchemeExpressive(hct, isDark, contrastLevel);
   } else if (type === "fidelity") {
-    const scheme = new SchemeFidelity(hct, isDark, contrastLevel);
+    scheme = new SchemeFidelity(hct, isDark, contrastLevel);
   } else if (type === "fruitsalad") {
-    const scheme = new SchemeFruitSalad(hct, isDark, contrastLevel);
+    scheme = new SchemeFruitSalad(hct, isDark, contrastLevel);
   } else if (type === "monochrome") {
-    const scheme = new SchemeMonochrome(hct, isDark, contrastLevel);
+    scheme = new SchemeMonochrome(hct, isDark, contrastLevel);
   } else if (type === "rainbow") {
-    const scheme = new SchemeRainbow(hct, isDark, contrastLevel);
+    scheme = new SchemeRainbow(hct, isDark, contrastLevel);
   } else if (type === "tonalspot") {
-    const scheme = new SchemeTonalSpot(hct, isDark, contrastLevel);
+    scheme = new SchemeTonalSpot(hct, isDark, contrastLevel);
   } else if (type === "vibrant") {
-    const scheme = new SchemeVibrant(hct, isDark, contrastLevel);
+    scheme = new SchemeVibrant(hct, isDark, contrastLevel);
   } else if (type === "neutral") {
-    const scheme = new SchemeNeutral(hct, isDark, contrastLevel);
+    scheme = new SchemeNeutral(hct, isDark, contrastLevel);
   } else console.error("scheme type error");
+
+  return [mode, contrast, scheme];
 }
 
-function updateColors(sourceColor) {}
+export function updateColors(sourceColor, schemeType = "tonalspot") {
+  const mode = ["light", "dark"];
+  const contrast = ["default", "medium", "high"];
+  const colorName = [
+    "background",
+    "onBackground",
+    "surface",
+    "surfaceDim",
+    "surfaceBright",
+    "surfaceContainerLowest",
+    "surfaceContainerLow",
+    "surfaceContainer",
+    "surfaceContainerHigh",
+    "surfaceContainerHighest",
+    "onSurface",
+    "surfaceVariant",
+    "onSurfaceVariant",
+    "inverseSurface",
+    "inverseOnSurface",
+    "outline",
+    "outlineVariant",
+    "shadow",
+    "scrim",
+    "surfaceTint",
+    "primary",
+    "onPrimary",
+    "primaryContainer",
+    "onPrimaryContainer",
+    "inversePrimary",
+    "secondary",
+    "onSecondary",
+    "secondaryContainer",
+    "onSecondaryContainer",
+    "tertiary",
+    "onTertiary",
+    "tertiaryContainer",
+    "onTertiaryContainer",
+    "error",
+    "onError",
+    "errorContainer",
+    "onErrorContainer",
+    "primaryFixed",
+    "primaryFixedDim",
+    "onPrimaryFixed",
+    "onPrimaryFixedVariant",
+    "secondaryFixed",
+    "secondaryFixedDim",
+    "onSecondaryFixed",
+    "onSecondaryFixedVariant",
+    "tertiaryFixed",
+    "tertiaryFixedDim",
+    "onTertiaryFixed",
+    "onTertiaryFixedVariant",
+  ];
+
+  mode.forEach((mo) => {
+    contrast.forEach((co) => {
+      const param = colorScheme(sourceColor, schemeType, mo, co);
+      colorName.forEach((cn) => {
+        setColorFromScheme(param, cn);
+      });
+    });
+  });
+}
