@@ -12,7 +12,7 @@ import {
   SchemeVibrant,
   SchemeRainbow,
   SchemeFruitSalad,
-} from "../node_modules/@material/material-color-utilities/index.js";
+} from "../../@material/material-color-utilities/index.js";
 
 function setColorFromScheme([mode, contrast, scheme], colorName) {
   const palette = MaterialDynamicColors[colorName];
