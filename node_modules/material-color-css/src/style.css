@@ -1,0 +1,13 @@
+/*
+The project dependency @material/material-color-utilities(version: 0.2.7) has some bugs due to being outdated. It is recommended to directly install the node_modules folder from the project or refer to GitHub issues to manually modify the module.
+Github issue:https://github.com/material-foundation/material-color-utilities/issues/137
+*/
+
+
+/* your css */
+@import url("material-colors.css");
+
+body {
+    background-color: var(--token-name);
+    color: var(--token-name);
+  }
