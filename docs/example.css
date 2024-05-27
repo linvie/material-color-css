@@ -1,4 +1,4 @@
-@import url("../src/material-colors.css");
+@import url("./public/css/material-colors.css");
 
 *{
     margin: 0;
