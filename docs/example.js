@@ -1,4 +1,7 @@
-import { updateColors, colorFromImage } from "../src/material-colors.js";
+import {
+  updateColors,
+  colorFromImage,
+} from "./node_modules/material-color-css/index.js";
 
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
