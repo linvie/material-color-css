@@ -15,6 +15,15 @@
     "@material/material-color-utilities": "^0.2.7"
   },
   "main": "index.js",
+  "module": "index.js",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "default": "./index.js"
+    }
+  },
   "keywords": [
     "material",
     "material design",
