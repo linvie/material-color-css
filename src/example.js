@@ -1,14 +1,10 @@
-import { updateColors, colorFromImage } from "material-color-css";
+import "./example.css";
 
-const button = document.querySelector("button");
-button.addEventListener("click", () => {
-  updateColors("#ffffff");
-});
+import { updateColors, colorFromImage } from "material-color-css";
 
 const color = document.querySelector('input[type="color"]');
 color.addEventListener("input", (e) => {
   const color = e.target.value;
-  // console.log(color);
   updateColors(color);
 });
 
