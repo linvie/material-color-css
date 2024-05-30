@@ -198,7 +198,6 @@ export function colorFromImage(file) {
   convertImageToARGB(file).then((pixels) => {
     const quantizerResult = QuantizerCelebi.quantize(pixels, 128);
     const colors = Score.score(quantizerResult);
-    console.log(colors);
-    updateColors(hexFromArgb(colors[0]));
+    return hexFromArgb(colors[0]);
   });
 }
