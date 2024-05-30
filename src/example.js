@@ -1,6 +1,6 @@
 import "./example.css";
 
-import { updateColors, colorFromImage } from "material-color-css";
+import { updateColors, updateColorFromImage } from "material-color-css";
 
 let scheme;
 const color = document.querySelector('input[type="color"]');
@@ -53,11 +53,12 @@ document.querySelector(".modes svg").addEventListener("click", () => {
 const fileInput = document.querySelector('input[type="file"]');
 fileInput.addEventListener("change", (event) => {
   const file = event.target.files[0];
-  const color = colorFromImage(file);
-  if (scheme) {
-    updateColors(color, scheme);
-  } else {
-    updateColors(color);
+  if (file) {
+    if (scheme) {
+      updateColorFromImage(file, scheme);
+    } else {
+      updateColorFromImage(file);
+    }
   }
 });
 
