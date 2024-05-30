@@ -20,8 +20,18 @@ module.exports = {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: "asset/resource",
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        use: [
+          {
+            loader: "url-loader",
+            options: {
+              limit: 8192,
+              fallback: require.resolve("file-loader"),
+              name: "[name].[hash].[ext]",
+              outputPath: "images/",
+            },
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
