@@ -194,10 +194,11 @@ function imageDataToARGB(imageData) {
   return pixels;
 }
 
-export function colorFromImage(file) {
+export function updateColorFromImage(file, scheme = "tonalspot") {
   convertImageToARGB(file).then((pixels) => {
     const quantizerResult = QuantizerCelebi.quantize(pixels, 128);
     const colors = Score.score(quantizerResult);
-    return hexFromArgb(colors[0]);
+    // console.log(hexFromArgb(colors[0]))
+    updateColors(hexFromArgb(colors[0]), scheme);
   });
 }
