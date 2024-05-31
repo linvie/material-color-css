@@ -1,18 +1,14 @@
-English | [简体中文](./README.zh-CN.md)
+English | [简体中文](./readme.zh-CN.md)
 
 A CSS generation module based on the [Dynamic Color Utilities](https://github.com/material-foundation/material-color-utilities/tree/main) from Material Design. It facilitates dynamic colors on the web by using real-time updated CSS and CSS variable references.
 
 [**Live Demo**](https://linvie.github.io/material-color-css/)
-
-
 
 ## Getting Started
 
 ```cli
 npm i material-color-css
 ```
-
-
 
 Move the generated CSS to the root directory
 
@@ -29,8 +25,6 @@ mv "./node_modules/material-color-css/public" "."
 ```
 
 Add the CSS to `/public/css/style.css` and link it in `index.html` or directly link `/public/css/material-colors.css` in your CSS file.
-
-
 
 ## Usage
 
@@ -82,8 +76,6 @@ document.querySelector("input[type='file']").addEventListener("change", (e) => {
   updateColorFromImage(file);
 });
 ```
-
-
 
 Color Templates
 
@@ -143,8 +135,6 @@ There are nine different color templates available. The official descriptions ar
 ## Note
 
 The NPM package of Material Design [Dynamic Color Utilities](https://github.com/material-foundation/material-color-utilities/tree/main) has not been updated for a long time. There are undefined issues when using the Rainbow and FruitSalad templates. Refer to the [issue](https://github.com/material-foundation/material-color-utilities/issues/137) for more details.
-
-
 
 **Solution:**
 

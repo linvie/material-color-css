@@ -1,6 +1,6 @@
 {
   "name": "material-color-css",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Provides an easy way to apply Material Design dynamic color schemes to your project through CSS. ",
   "type": "module",
   "scripts": {
