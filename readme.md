@@ -1,14 +1,20 @@
-基于 Material Design [动态颜色程序](https://github.com/material-foundation/material-color-utilities/tree/main)的 CSS 生成模块。采用实时更新 CSS 和 CSS 变量引用的方式让网页实现动态颜色变得更简单。
+English | [简体中文](./README.zh-CN.md)
 
-[**效果网页**](https://linvie.github.io/material-color-css/)
+A CSS generation module based on the [Dynamic Color Utilities](https://github.com/material-foundation/material-color-utilities/tree/main) from Material Design. It facilitates dynamic colors on the web by using real-time updated CSS and CSS variable references.
 
-## 开始
+[**Live Demo**](https://linvie.github.io/material-color-css/)
+
+
+
+## Getting Started
 
 ```cli
 npm i material-color-css
 ```
 
-将生成的 CSS 移动到根目录
+
+
+Move the generated CSS to the root directory
 
 **windows**
 
@@ -22,22 +28,24 @@ move "./node_modules/material-color-css/public" "."
 mv "./node_modules/material-color-css/public" "."
 ```
 
-将 CSS 写到 `/public/css/style.css` 并引入 `index.html` 或 将 `/public/css/material-colors.css` 直接引入你的 css 文件
+Add the CSS to `/public/css/style.css` and link it in `index.html` or directly link `/public/css/material-colors.css` in your CSS file.
 
-## 使用
 
-`material-colors.css` 中 CSS 变量名如下构成
+
+## Usage
+
+The CSS variable names in `material-colors.css` are structured as follows:
 
 ```
---< light / dark>-< default / medium / high >-< color name>
-// --模式-对比度-颜色名
+--< light / dark>-< default / medium / high >-< color name >
+// --mode-contrast-color name
 ```
 
-如果网页没有切换深/浅模式 和 对比度 的需求，建议保持前两个参数不变，选择同一类下的颜色
+If your webpage does not need to switch between light/dark modes and contrast levels, it is recommended to keep the first two parameters consistent and choose colors within the same category.
 
-具体颜色选择方法，请参考 Material Design 中 [color roles](https://m3.material.io/styles/color/roles)一节
+For detailed color selection, please refer to the [color roles](https://m3.material.io/styles/color/roles) section in Material Design.
 
-将变量引入 CSS 文件，即可使用
+Include the variables in your CSS file to use them:
 
 ```
 //your css
@@ -49,20 +57,20 @@ body {
   }
 ```
 
-更新颜色
+Updating Colors
 
 ```
-//your js
-import { updateColors,updateColorFromImage } from "material-color-css"
+// your js
+import { updateColors, updateColorFromImage } from "material-color-css";
 
-updateColors(sourceColor, scheme)
-// sourceColor 应该为 十六位格式颜色 如 "#431104"
-// scheme 为可选项， 默认为"tonalspot", 该参数是使用不同的颜色模板，作为参数时需要去除空格
+updateColors(sourceColor, scheme);
+// sourceColor should be a hex format color like "#431104"
+// scheme is optional, default is "tonalspot", this parameter uses different color templates, and when provided, should be in string format without spaces
 
-updateColorFromImage(file, scheme)
-//file 为图片文件
+updateColorFromImage(file, scheme);
+// file should be an image file
 
-e.g.
+// e.g.
 const button = document.querySelector("button");
 button.addEventListener("click", () => {
   console.log("clicked");
@@ -75,9 +83,11 @@ document.querySelector("input[type='file']").addEventListener("change", (e) => {
 });
 ```
 
-颜色模板
 
-共有九种不同的颜色模板，官方介绍如下，可通过[网页](https://linvie.github.io/material-color-css/)查看效果
+
+Color Templates
+
+There are nine different color templates available. The official descriptions are as follows, and you can check the effects through the [webpage](https://linvie.github.io/material-color-css/).
 
 - Content
 
@@ -130,10 +140,12 @@ document.querySelector("input[type='file']").addEventListener("change", (e) => {
 
   A Dynamic Color theme that maxes out colorfulness at each position in the Primary Tonal Palette.
 
-## 注意
+## Note
 
-Material Design [动态颜色程序](https://github.com/material-foundation/material-color-utilities/tree/main) 的 NPM 包已经长时间没有更新，在使用 Rainbow 和 FruitSalad 模板时存在未定义问题，参见[issue](https://github.com/material-foundation/material-color-utilities/issues/137)
+The NPM package of Material Design [Dynamic Color Utilities](https://github.com/material-foundation/material-color-utilities/tree/main) has not been updated for a long time. There are undefined issues when using the Rainbow and FruitSalad templates. Refer to the [issue](https://github.com/material-foundation/material-color-utilities/issues/137) for more details.
 
-**解决方案：**
 
-参考 issue 修改模块中的引用 或 采用 `git clone`方式使用本库。
+
+**Solution:**
+
+Refer to the issue to modify the module references or use `git clone` to use this library.

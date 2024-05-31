@@ -1,6 +1,6 @@
 {
   "name": "material-color-css",
-  "version": "0.1.12",
+  "version": "0.1.14",
   "description": "Provides an easy way to apply Material Design dynamic color schemes to your project through CSS. ",
   "type": "module",
   "scripts": {
@@ -36,5 +36,13 @@
     "src",
     "bin",
     "index.js"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/linvie/material-color-css.git"
+  },
+  "bugs": {
+    "url": "https://github.com/linvie/material-color-css/issues"
+  },
+  "homepage": "https://github.com/linvie/material-color-css"
 }
