@@ -62,7 +62,7 @@ fileInput.addEventListener("change", (event) => {
   }
 });
 
-let c = "defult";
+let c = "default";
 let m = "light";
 const body = document.querySelector("body");
 
