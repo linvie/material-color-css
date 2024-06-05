@@ -12,7 +12,7 @@
   "author": "linvie",
   "license": "MIT",
   "dependencies": {
-    "@material/material-color-utilities": "^0.2.7"
+    "material-color-utilities-fork": "^0.0.1"
   },
   "main": "index.js",
   "module": "index.js",

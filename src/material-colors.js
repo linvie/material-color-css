@@ -10,8 +10,8 @@ import {
   SchemeNeutral,
   SchemeTonalSpot,
   SchemeVibrant,
-  // SchemeRainbow,
-  // SchemeFruitSalad,
+  SchemeRainbow,
+  SchemeFruitSalad,
   QuantizerCelebi,
   Score,
 } from "../../@material/material-color-utilities/index.js";
