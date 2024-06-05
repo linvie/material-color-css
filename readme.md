@@ -139,4 +139,5 @@ The NPM package of Material Design [Dynamic Color Utilities](https://github.com/
 **Solution:**
 
 // Refer to the issue to modify the module references or use `git clone` to use this library.
+
 The dependency branch has been created, and this module can be used directly.
