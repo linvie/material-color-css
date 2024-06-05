@@ -137,4 +137,5 @@ Material Design [动态颜色程序](https://github.com/material-foundation/mate
 **解决方案：**
 
 // 参考 issue 修改模块中的引用 或 采用 `git clone`方式使用本库。
+
 已创建依赖项分支，本模块可直接使用
