@@ -14,7 +14,7 @@ import {
   SchemeFruitSalad,
   QuantizerCelebi,
   Score,
-} from "../../@material/material-color-utilities/index.js";
+} from "material-color-utilities-fork";
 
 function setColorFromScheme([mode, contrast, scheme], colorName) {
   const palette = MaterialDynamicColors[colorName];
